@@ -1,9 +1,4 @@
-const autoPreprocess = require('svelte-preprocess');
-
+const { postcss } = require('svelte-preprocess');
 module.exports = {
-  preprocess: autoPreprocess({
-    defaults: {
-      script: 'typescript',
-    },
-  }),
+  preprocess: [postcss()],
 };
