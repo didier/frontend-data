@@ -5,8 +5,12 @@
     "dev": "svite",
     "build": "svite build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "d3": "^6.2.0"
+  },
   "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-plugin-svelte3": "^2.7.3",
     "postcss": "^8.1.2",
     "postcss-import": "^12.0.1",
     "postcss-load-config": "^3.0.0",

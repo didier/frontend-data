@@ -1,15 +1,16 @@
 <script>
-  const world = 'postcss' // edit world and save to see hmr update
+  import Button from './components/atoms/Button.svelte'
+  import D3Wrapper from './components/molecules/D3Wrapper.svelte'
+  import Face from './components/molecules/Face.svelte'
+
+  let isFaceShown = false
 </script>
 
-<style>
-  h1 {
-    color: orangered;
-  }
-</style>
+<h1>Hello</h1>
+<Button on:click={() => (isFaceShown = !isFaceShown)} />
 
-<h1 class="border border-current rounded p-4 m-4">
-  <!-- tailwind classes in svelte template -->
-  Hello
-  <span class="world">{world}</span>
-</h1>
+{#if isFaceShown}
+  <Face />
+{/if}
+
+<D3Wrapper />
