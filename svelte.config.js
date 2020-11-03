@@ -1,17 +1,9 @@
-const sveltePreprocess = require('svelte-preprocess');
+const autoPreprocess = require('svelte-preprocess');
+
 module.exports = {
-  preprocess: sveltePreprocess({
-    typescript: true,
-    postcss: true,
-    // disable preprocessors not in use
-    babel: false,
-    coffeescript: false,
-    globalStyle: false,
-    less: false,
-    pug: false,
-    replace: false,
-    sass: false,
-    scss: false,
-    stylus: false,
+  preprocess: autoPreprocess({
+    defaults: {
+      script: 'typescript',
+    },
   }),
 };
