@@ -2,7 +2,7 @@
   // Packages
   import { onMount } from 'svelte'
   import { select, arc } from 'd3'
-  onMo
+
   const EYE_SPACING = 100
   const EYE_RADIUS = 40
   const Y_OFFSET = -70

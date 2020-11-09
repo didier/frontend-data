@@ -1,16 +1,11 @@
 <script>
-  import Button from './components/atoms/Button.svelte'
   import D3Wrapper from './components/molecules/D3Wrapper.svelte'
-  import Face from './components/molecules/Face.svelte'
 
-  let isFaceShown = false
+  import RoadScene from './components/molecules/RoadScene.svelte'
+  import Visualisation from './components/molecules/Visualisation.svelte'
+  import Header from './organisms/Header.svelte'
 </script>
 
-<h1>Hello</h1>
-<Button on:click={() => (isFaceShown = !isFaceShown)} />
-
-{#if isFaceShown}
-  <Face />
-{/if}
-
-<D3Wrapper />
+<Header />
+<Visualisation />
+<!-- <RoadScene /> -->

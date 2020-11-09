@@ -7,13 +7,13 @@
  * @returns `String`
  */
 export function replaceAll(
-	string,
-	replace,
-	replaceBy
+  string,
+  replace,
+  replaceBy
 ) {
-	const regex = new RegExp(replace, 'g')
-	const newString = string.replace(regex, replaceBy)
-	return newString
+  const regex = new RegExp(replace, 'g')
+  const newString = string.replace(regex, replaceBy)
+  return newString
 }
 
 /**
@@ -25,15 +25,15 @@ export function replaceAll(
  * @returns `String` of which parts from the `replaceArray` have been replaced by `replaceBy`
  */
 export function replaceByArray(
-	string,
-	replaceArray,
-	replaceBy
+  string,
+  replaceArray,
+  replaceBy
 ) {
-	// TODO: Fix replaceArray function
-	let newString = string
-	// return replaceArray.forEach((item) => replaceAll(string, item, replaceBy));
-	//  Return something so JS doesn't yell at me.
-	return newString
+  // TODO: Fix replaceArray function
+  let newString = string
+  // return replaceArray.forEach((item) => replaceAll(string, item, replaceBy));
+  //  Return something so JS doesn't yell at me.
+  return newString
 }
 
 /**
@@ -43,7 +43,7 @@ export function replaceByArray(
  * @returns `String` with capitalized first letter
  */
 export function capitalizeFirst(string) {
-	return string.charAt(0).toUpperCase() + string.slice(1)
+  return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 /**
@@ -54,8 +54,8 @@ export function capitalizeFirst(string) {
  * @returns {[]} - The cleaned array of objects
  */
 export function removeWhitespace(data, property) {
-	return data.map((item) => {
-		const trimmed = item[property].trim()
-		return { [property]: trimmed }
-	})
+  return data.map((item) => {
+    const trimmed = item[property].trim()
+    return { [property]: trimmed }
+  })
 }

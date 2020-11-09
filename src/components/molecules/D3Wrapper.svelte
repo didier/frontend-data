@@ -9,9 +9,7 @@
   let wrapper
 
   onMount(async () => {
-    const data = await fetch(
-      'https://opendata.rdw.nl/resource/534e-5vdg.json?$limt=10'
-    )
+    const data = await fetch('https://opendata.rdw.nl/resource/534e-5vdg.csv')
       .then((res) => res.text())
       .then((data) => data)
 
