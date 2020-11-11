@@ -8,7 +8,12 @@ import {
 } from './constants'
 
 export default async function cleanData() {
-  const [tariefData, geoData, specsData] = await getData([
+  // Destructure data after all three promises have been resolved
+  const [
+    tariefData,
+    geoData,
+    specsData
+  ] = await getData([
     TARIEFDEEL,
     GEO_PARKEERGARAGES,
     SPECIFICATIES_PARKEERGEBIED,
@@ -46,5 +51,7 @@ export default async function cleanData() {
         humanReadableAdress: JSON.parse(entry.location.human_address || '{}'),
       }
     }))
+
+  // Return ✨utterly pristine✨ data
   return mergedData
 }
