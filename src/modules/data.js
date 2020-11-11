@@ -16,12 +16,13 @@ export default async function cleanData() {
 
   const mergedData = geoData
     .map(location => {
-      // Merge specs and geo based on areaID
+      // Merge specs and geo based on AreaId
       const spec = specsData.find(spec => location.areaid === spec.areaid)
       return { ...location, ...spec }
     })
 
     .map(entry => {
+      // Merge tarief, specs and geo based on AreaManagerId
       const tarief = tariefData.find(tarief => entry.areamanagerid === tarief.areamanagerid)
       return { ...entry, ...tarief }
     })
