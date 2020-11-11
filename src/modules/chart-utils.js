@@ -24,7 +24,6 @@ export function setupScales({
   const yScale = scaleBand()
     .domain(data.map(yValue))
     .range([0, innerHeight])
-    .padding(.1)
 
   return { xScale, yScale }
 }
@@ -53,7 +52,9 @@ export function render(
   // Declare axis values to be reused throughout the flow.
   const [xValue, yValue] = [
     (data) => data.hourlyCost,
-    (data) => data.areaId
+    (data) => data.description
+    // (data) => data.areaManagerId
+    // (data) => data.areaId
   ]
 
   const { xScale, yScale } = setupScales(
@@ -82,7 +83,7 @@ export function render(
     .data(data)
     .enter()
     .append('rect')
-    .attr('y', (d) => yScale(d.areaId))
+    .attr('y', (d) => yScale(d.description))
     .attr('width', (d) => xScale(d.hourlyCost))
     .attr('height', yScale.bandwidth())
 }

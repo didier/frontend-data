@@ -76,7 +76,12 @@ export function sortBy(array, property) {
   }
 }
 
-
+/**
+ * Fetches the data of all supplied urls.
+ *
+ * @param {string[]} urls URLs to fetch data from
+ * @returns a Promise with the fetched data as its return value
+ */
 export function getData(urls) {
   const promises = urls.map(url => fetch(url).then(res => res.json()))
   return Promise.all(promises).then(values => { return values })
