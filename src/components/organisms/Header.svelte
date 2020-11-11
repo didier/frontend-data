@@ -1,5 +1,5 @@
 <script>
-  import Container from '../components/atoms/Container.svelte'
+  import Container from '../atoms/Container.svelte'
 </script>
 
 <div class="py-10 bg-blue-300">
