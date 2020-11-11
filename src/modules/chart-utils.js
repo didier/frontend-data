@@ -24,6 +24,7 @@ export function setupScales({
   const yScale = scaleBand()
     .domain(data.map(yValue))
     .range([0, innerHeight])
+    .padding(.1)
 
   return { xScale, yScale }
 }
@@ -50,7 +51,7 @@ export function render(
   const innerHeight = height - margin.top - margin.bottom
 
   // Declare axis values to be reused throughout the flow.
-  const [xValue, yValue] = [(d) => d.hourlyCost, (d) => d.areaId]
+  const [xValue, yValue] = [(data) => data.hourlyCost, (data) => data.areaId]
 
   const { xScale, yScale } = setupScales(
     {
@@ -70,6 +71,8 @@ export function render(
   // Append the yAxis labels to the group
   g.append('g').call(axisLeft(yScale))
   g.append('g').call(axisBottom(xScale))
+    // Translate axis to the bottom
+    .attr('transform', `translate(0, ${innerHeight})`)
 
   // Insert all data into the group
   g.selectAll('rect')

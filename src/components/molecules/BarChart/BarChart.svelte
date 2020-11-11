@@ -53,6 +53,16 @@
   })
 </script>
 
+<style>
+  :global(rect) {
+    fill: theme('colors.blue.800');
+  }
+
+  :global(text) {
+    font-size: 2em;
+  }
+</style>
+
 <Container>
   <svg transition:fade height={innerHeight} width={innerWidth} />
 </Container>
