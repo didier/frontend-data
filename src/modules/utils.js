@@ -75,3 +75,9 @@ export function sortBy(array, property) {
     return array.sort()
   }
 }
+
+
+export function getData(urls) {
+  const promises = urls.map(url => fetch(url).then(res => res.json()))
+  return Promise.all(promises).then(values => { return values })
+}

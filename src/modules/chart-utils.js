@@ -51,7 +51,10 @@ export function render(
   const innerHeight = height - margin.top - margin.bottom
 
   // Declare axis values to be reused throughout the flow.
-  const [xValue, yValue] = [(data) => data.hourlyCost, (data) => data.areaId]
+  const [xValue, yValue] = [
+    (data) => data.hourlyCost,
+    (data) => data.areaId
+  ]
 
   const { xScale, yScale } = setupScales(
     {
