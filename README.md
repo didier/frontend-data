@@ -16,18 +16,10 @@ Functional Programming subject of [@cmda-tt](https://github.com/cmda-tt)
 
 - Opening times — [Open Data Parkereen: Tijdvak](https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TIJDVAK/ixf8-gtwq)
 
-  - StartTimeTimeFrame
-  - EndTimeTimeFrame
-
-- Electric Vehicle charging spots
+- Electric Vehicle charging spots [Open Data Parkeren: Specificaties Parkeergebied](https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-SPECIFICATIES-PARKEERGEBIED/b3us-f26s)
+- Parking spot location [Open Data Parkeren: Specificaties Parkeergebied](https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-SPECIFICATIES-PARKEERGEBIED/b3us-f26s)
 
 - Hourly cost — [Open Data Parkeren: Tariefdeel](https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg)
-
-  - StartDateFarePart
-  - StartDurationFarePart
-  - EndDurationFarePart
-  - AmountFarePart
-  - StepSizeFarePart
 
 - For how long you can park
 
@@ -82,8 +74,10 @@ yarn build # or npm run build
 
 <!-- ### Data -->
 
-- Open Data Parkeren — Tariefdeel. (n.d.). Open Data RDW. Retrieved October 28, 2020, from https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg
+- Open Data RDW — Tariefdeel. (n.d.). Open Data RDW. Retrieved October 28, 2020, from https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg
+- Open Data RDW — Specificaties Parkeergebied. (n.d.). Open Data RDW. Retrieved November 11, 2020, from https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-SPECIFICATIES-PARKEERGEBIED/b3us-f26s
 - Open Data RDW — Datasets. (n.d.). Open Data RDW. Retrieved October 27, 2020, from https://opendata.rdw.nl/browse
+
 <!-- ### Knowledge -->
 
 ## License
