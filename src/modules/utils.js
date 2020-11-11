@@ -59,3 +59,19 @@ export function removeWhitespace(data, property) {
     return { [property]: trimmed }
   })
 }
+
+/**
+ * Sorts an array of objects alphabetically or by property
+ *
+ * @export
+ * @param {object[]} array Array of objects
+ * @param {String} property Object property to sort by. If left blank, the function sorts descending alphabetically or numerically.
+ * @returns {object[]} array of oooasd
+ */
+export function sortBy(array, property) {
+  if (property) {
+    return array.sort((a, z) => a[property] - z[property])
+  } else {
+    return array.sort()
+  }
+}

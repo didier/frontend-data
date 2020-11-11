@@ -1,64 +1,32 @@
 <script>
   // Imports
   import { onMount } from 'svelte'
-  import { select, scaleLinear, max, scaleBand, axisLeft, axisBottom } from 'd3'
+  import { fade } from 'svelte/transition'
+  import { select } from 'd3'
+
+  // Utils
+  import { render } from '/src/modules/chart-utils'
+  import { sortBy } from '/src/modules/utils'
+
+  // Constants
+  import { TARIEFDEEL_API } from './constants'
 
   // Components
   import Container from '../../atoms/Container.svelte'
 
   // Props
-  let innerWidth, innerHeight
-
-  // Constants
-  import { TARIEFDEEL_API } from './constants'
+  let innerWidth = 1000
+  let innerHeight = 1000
 
   onMount(async () => {
-    /**
-     * Renders a visualisation based on a given element and dataset.
-     *
-     * @param {NodeList} element - The (usually) SVG element to append the graph to
-     * @param {Array} data - the dataset with which to hydrate the visualisation
-     */
-    function render(element, data) {
-      // Declare axis values to be reused throughout the flow.
-      const [xValue, yValue] = [(d) => d.hourlyCost, (d) => d.areaId]
-      const [width, height] = [+element.attr('width'), +element.attr('height')]
+    // Select SVG element using `d3.select`
+    const svg = select('svg')
 
-      // Apply margins to the visualisation
-      const margin = { top: 200, right: 200, bottom: 200, left: 200 }
+    // Destructure width and height from the SVG attributes
+    const [width, height] = [+svg.attr('width'), +svg.attr('height')]
 
-      // Calculate innerWidth to account for margins. Prevents overflow.
-      const innerWidth = width - margin.left - margin.right
-      const innerHeight = height - margin.top - margin.bottom
-
-      // X-axis domain + range
-      const xScale = scaleLinear()
-        .domain([0, max(data, xValue)])
-        .range([0, innerWidth])
-
-      // Y-axis domain + range
-      const yScale = scaleBand()
-        .domain(data.map(yValue))
-        .range([0, innerHeight])
-
-      // Create a new group element
-      const g = element
-        .append('g')
-        .attr('transform', `translate(${margin.left}, ${margin.top})`)
-
-      // Append the yAxis labels to the group
-      g.append('g').call(axisLeft(yScale))
-      g.append('g').call(axisBottom(xScale))
-
-      // Insert all data into the group
-      g.selectAll('rect')
-        .data(data)
-        .enter()
-        .append('rect')
-        .attr('y', (d) => yScale(d.areaId))
-        .attr('width', (d) => xScale(d.hourlyCost))
-        .attr('height', yScale.bandwidth())
-    }
+    // Setup margins for the visualisation
+    const margin = { top: 64, right: 0, bottom: 64, left: 0 }
 
     // Fetch the data from the RDW
     const data = await fetch(TARIEFDEEL_API)
@@ -66,26 +34,25 @@
       .then((data) => data)
 
     // Remove unused data and clean up object key names
-    const cleanData = await data
-      .map((entry) => {
-        return {
-          // Cost of parking for one hour.
-          hourlyCost: (entry.amountfarepart / entry.stepsizefarepart) * 60,
-          // The area ID of the parking zone.
-          areaId: entry.areamanagerid,
-        }
-      })
-      // Sort cost ascending
-      .sort((a, z) => a.hourlyCost - z.hourlyCost)
+    const cleanData = await data.map((entry) => ({
+      // Cost of parking for one hour.
+      hourlyCost: (entry.amountfarepart / entry.stepsizefarepart) * 60,
+      // The area ID of the parking zone.
+      areaId: entry.areamanagerid,
+    }))
 
-    const svg = select('svg')
-    render(svg, cleanData)
+    // Sort cost ascending
+    sortBy(cleanData, 'hourlyCost')
+
+    // render(svg, cleanData, margin)
+    render(svg, cleanData, {
+      margin,
+      width,
+      height,
+    })
   })
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight />
-<Container bind:innerWidth bind:innerHeight>
-  {#key (innerHeight, innerWidth)}
-    <svg height={innerHeight} width={innerWidth} />
-  {/key}
+<Container>
+  <svg transition:fade height={innerHeight} width={innerWidth} />
 </Container>
